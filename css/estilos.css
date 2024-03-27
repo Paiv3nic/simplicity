@@ -82,3 +82,20 @@ nav h2 a:hover, nav h2 a:focus, .links-menu:hover, .links-menu:focus {
     right: 0;
     background-color: var(--cor-clara);
 }
+
+.destaque {
+    height: 500px; /* altura */
+    background-image: url(../imagens/fundo-destaque.jpg);
+    background-attachment: fixed; /* Para fazer a imagem de fundo ficar parada */
+    background-size: cover; /* mantem a proporção */
+    display: flex;
+    flex-direction: column; /* "modo coluna" um abaixo do outro */
+    justify-content: center; /*texto no centro */
+    align-items: center;
+}
+
+.destaque h2, .destaque p {
+    text-align: center;
+    color: var(--cor-clara);
+}
+
