@@ -55,3 +55,21 @@ nav h2 a {
     padding: 1rem;
     display: inline-block;
 }
+
+nav h2 a:hover, nav h2 a:focus, .links-menu:hover, .links-menu:focus {
+    background-color: var(--cor-intermediaria);
+} 
+
+.links-menu {
+    list-style: none;
+    display: none;
+}
+
+.links-menu a {
+    color: var(--cor-escura);
+    font-weight: bold;
+    display: flex;
+    height: 50px;    
+    justify-content: center;
+    align-items: center;
+}
