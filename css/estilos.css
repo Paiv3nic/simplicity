@@ -43,6 +43,7 @@ h1 a {
 }
 
 header {
+    height: 12vh;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -84,7 +85,7 @@ nav h2 a:hover, nav h2 a:focus, .links-menu:hover, .links-menu:focus {
 }
 
 .destaque {
-    height: 500px; /* altura */
+    height: 88vh; /* altura */
     background-image: url(../imagens/fundo-destaque.jpg);
     background-attachment: fixed; /* Para fazer a imagem de fundo ficar parada */
     background-size: cover; /* mantem a proporção */
@@ -99,3 +100,10 @@ nav h2 a:hover, nav h2 a:focus, .links-menu:hover, .links-menu:focus {
     color: var(--cor-clara);
 }
 
+.destaque h2 {
+    font-size: clamp(3rem, 10vw, 7rem);    
+}
+
+.destaque p {
+    font-size: clamp(1.5rem, 3vw, 3rem);
+}
