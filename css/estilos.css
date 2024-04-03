@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
 
-* {box-sizing: border-box;}
+* { box-sizing: border-box; }
 
 :root {
     --cor-titulo: #4d4d4d;
@@ -28,16 +28,15 @@ img { max-width: 100%; }
 a { text-decoration: none; }
 
 h1 {
-    font-family: 'Raleway', sans-serif;
+    font-family: Raleway, sans-serif;
     text-transform: uppercase;
     font-weight: 800;
     font-size: 1.5rem;
-
 }
 
 h1 a {
-    color: var(--cor-clara);
     background-color: var(--cor-escura);
+    color: var(--cor-clara);
     padding: 0.3rem 1rem;
     border-radius: 4px;
 }
@@ -49,7 +48,7 @@ header {
     align-items: center;
 }
 
-nav h2 a {
+nav h2 a { 
     color: var(--cor-escura);
     font-size: 1.2rem;
     /* background-color: yellow; */
@@ -57,53 +56,259 @@ nav h2 a {
     display: inline-block;
 }
 
-nav h2 a:hover, nav h2 a:focus, .links-menu:hover, .links-menu:focus {
-    background-color: var(--cor-intermediaria);
-} 
 
+nav h2 a:hover, nav h2 a:focus,
+.links-menu a:hover, .links-menu a:focus { 
+    background-color: var(--cor-intermediaria);
+}
+
+/* Estilos para a lista ul contida no nav */
 .links-menu {
     list-style: none;
+
+    /* Atenção: neste ponto, fazemos com que os links
+    do menu iniciem escondidos (display:none).
+    Posteriormente, com ajuda do CSS combinado com JS,
+    faremos os controles para exibir/esconder de forma
+    alternada. */
     display: none;
 }
 
+/* Estilos para os links contidos
+na ul dentro do nav */
 .links-menu a {
     color: var(--cor-escura);
     font-weight: bold;
     display: flex;
-    height: 50px;    
+    height: 50px;
     justify-content: center;
     align-items: center;
 }
 
-.links-menu.aberto {
+/* Regra que será aplicada somente
+quando o menu for acionado para abertura */
+.links-menu.aberto {    
+    /* Ativando o flex fazemos
+    com que os links voltem a aparecer. */
     display: flex;
+
+    /* Fazemos com que eles fiquem
+    um em cima do outro (flex coluna) */
     flex-direction: column;
+
+    /* Ativamos position:absolute
+    e ajustamos a posição final dos links
+    usando propriedades de coordenadas. */
     position: absolute;
     left: 0;
     right: 0;
+
     background-color: var(--cor-clara);
 }
 
+/* Exercícios
+1) Crie uma regra CSS para formatar o destaque com as
+seguintes configurações:
+
+-Altura 500px
+-Imagem de fundo (fundo-destaque)
+-Imagem de fundo deve ficar parada
+-Flex com alinhamento totalmente centralizado, e um elemento
+em cima do outro (ou seja, use o modo coluna) */
+
 .destaque {
-    height: 88vh; /* altura */
-    background-image: url(../imagens/fundo-destaque.jpg);
-    background-attachment: fixed; /* Para fazer a imagem de fundo ficar parada */
-    background-size: cover; /* mantem a proporção */
+    height: 88vh;
+    background-image: 
+        url(../imagens/fundo-destaque.jpg);
+    background-attachment: fixed;
+    
     display: flex;
-    flex-direction: column; /* "modo coluna" um abaixo do outro */
-    justify-content: center; /*texto no centro */
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
+    
+    /* Versão 1: aplicando
+    cor e alinhamento do texto
+    DIRETAMENTE em destaque */
+    /* color: var(--cor-clara);
+    text-align: center; */
 }
 
+
+/* 2) Crie uma regra CSS para formatar o h2 e o p contidos em Destaque. Faça com que os textos fiquem centralizados (text-align) e com cor clara. */
+
+/* Versão 2: regras específicas
+para o h2 e para o p contidos em destaque */
 .destaque h2, .destaque p {
-    text-align: center;
     color: var(--cor-clara);
+    text-align: center;
+
+    /* Etapa 2: aplicar a animação */
+    animation-name: animaDestaque;
+    animation-duration: 1s;
+
+    /* Aceleração/desaceleração */
+    animation-timing-function: ease-out;
 }
 
-.destaque h2 {
-    font-size: clamp(3rem, 10vw, 7rem);    
+/* Sobre a função clamp()
+Função útil para redimensionamento
+responsivo de acordo com certos critérios.
+
+clamp( 
+  tamanhoMínimo,
+  tamanhoIdeal/Variável/Responsivo,
+  tamanhoMáximo
+); */
+
+.destaque h2 { 
+    font-size: clamp(3rem, 10vw, 7rem);
 }
 
 .destaque p {
     font-size: clamp(1.5rem, 3vw, 3rem);
+}
+
+/* Etapa 1) Regra de animação */
+@keyframes animaDestaque {
+    /* Dê (estado inicial, como começa) */
+    from {
+        opacity: 0;
+        transform: translateY(-600px);
+    }
+
+    /* Para (estado final, como termina) */
+    to { opacity: 1; }
+}
+
+article h2 {
+    padding: 1rem;
+    font-size: 1.4rem;
+    font-family: Raleway, sans-serif;
+    color: var(--cor-titulo);
+}
+
+.front-end, .historia, .localizacao {
+    text-align: center;
+}
+
+article p {
+    padding: 0.5rem 0;
+    font-size: 1.2rem;
+}
+
+address { 
+    font-style: normal; 
+    font-size: 1.2rem;
+}
+
+/* Correção exercícios */
+
+/* 1) Crie uma regra para formatar o artigo de História da Internet com:
+	
+-Plano de fundo: imagem "fundo-madeira"
+-Deixe a imagem parada e cobrindo todo o espaço do artigo */
+.historia {
+    background-image: url(../imagens/fundo-madeira.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+/* 2) Crie uma regra para formatar o titulo "História da Internet" com cor clara e uma sombra no texto. */
+.historia h2 {
+    color: var(--cor-clara);
+    text-shadow: var(--cor-escura) 2px 2px 4px;
+}
+
+/* 3) Crie uma regra para formatar o vídeo do artigo História da Internet com:
+	
+- Largura de 100%
+- Largura máxima de 700px
+- Margem inferior de 2rem */
+.historia iframe {
+    width: 100%;
+    max-width: 700px;
+    margin-bottom: 2rem;
+}
+
+/* 4) Crie uma regra para formatar o mapa da Localização com:
+	
+- Largura de 100%
+- Margem superior de 2rem */
+.localizacao iframe {
+    width: 100%;
+    margin-top: 2rem;
+}
+
+/* 5) Crie uma classe chamada "limitador" com largura de 95vw e margem automática. Aplique esta classe no cabeçalho e no artigo front-end. */
+.limitador {
+    width: 95vw;
+    margin: auto;
+}
+
+/* 6) Crie uma regra para o rodapé com:
+	
+- Fundo escuro
+- Cor do texto clara
+- Altura de 30vh
+- Negrito
+- Flex com centralização total
+- Texto centralizado */
+footer {
+    background-color: var(--cor-escura);
+    color: var(--cor-clara);
+    height: 30vh;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+
+/* Regras para as páginas Produtos, Serviços e Contato */
+.conteudo {
+    background-color: var(--cor-intermediaria);
+    padding: 0.5rem;
+    border-radius: 8px;
+}
+
+.conteudo h2 {
+    padding-left: 0;
+    font-size: 1.8rem;
+    border-bottom: solid 1px;
+    margin-bottom: 1rem;
+}
+
+table {
+    border: solid 4px;
+    width: 80%;
+    margin: auto;
+    max-width: 600px;
+    border-collapse: collapse;
+}
+
+caption {
+    text-transform: uppercase;
+    font-size: 2rem;
+    padding-bottom: 0.5rem;
+}
+
+th, td { border: solid 1px; }
+
+th {
+    background-color: var(--cor-escura);
+    color: var(--cor-clara);
+    border-color: var(--cor-escura);
+    padding: 0.8rem;
+}
+
+td { padding: 0.5rem; }
+
+tr:nth-child(odd){
+    background-color: yellow;
+}
+
+tr:nth-child(even){
+    background-color: salmon;
 }
