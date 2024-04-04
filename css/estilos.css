@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
 
+
+
 * { box-sizing: border-box; }
 
 :root {
@@ -311,4 +313,17 @@ tr:nth-child(odd){
 
 tr:nth-child(even){
     background-color: salmon;
+}
+
+td:nth-child(2){
+    text-align: center;
+}
+
+th:last-child, td:last-child {
+    text-align: right;
+}
+
+/* Inserindo um conteúdo textual antes (before) de cada valor (td:last-child) */
+td:last-child::before {
+    content: "R$";
 }
