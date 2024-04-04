@@ -54,11 +54,17 @@ h1 a {
     border-radius: 4px;
 }
 
-header {
+header .limitador2 {
     height: 12vh;
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+header {
+    position: sticky;
+    top: 0;
+    background-color: var(--cor-clara);
 }
 
 nav h2 a {
@@ -370,14 +376,14 @@ td:last-child::before {
         width: 100%;
     }
 
-    figure img {
+    .front-end figure img {
         height: 150px;
     }
 
 }
 
 @media screen and (min-width: 1000px) {
-    :root {
+    html {
         font-size: 18px;
     }
 
