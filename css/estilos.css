@@ -1,8 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
 
-* {
-    box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 :root {
     --cor-titulo: #4d4d4d;
@@ -12,9 +10,7 @@
     --cor-intermediaria: #ececec;
 }
 
-html {
-    font-size: 16px;
-}
+html { font-size: 16px; }
 
 body {
     color: var(--cor-texto);
@@ -22,23 +18,14 @@ body {
     background-color: var(--cor-clara);
 }
 
-body,
-h1,
-h2,
-p,
-figure,
-nav ul {
+body, h1, h2, p, figure, nav ul {
     margin: 0;
     padding: 0;
 }
 
-img {
-    max-width: 100%;
-}
+img { max-width: 100%; }
 
-a {
-    text-decoration: none;
-}
+a { text-decoration: none; }
 
 h1 {
     font-family: Raleway, sans-serif;
@@ -54,20 +41,23 @@ h1 a {
     border-radius: 4px;
 }
 
-header .limitador2 {
+/* Limitador da div contida no header */
+header .limitador {
     height: 12vh;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    /* background-color: yellow; */
 }
 
 header {
     position: sticky;
     top: 0;
     background-color: var(--cor-clara);
+    z-index: 100;
 }
 
-nav h2 a {
+nav h2 a { 
     color: var(--cor-escura);
     font-size: 1.2rem;
     /* background-color: yellow; */
@@ -76,10 +66,8 @@ nav h2 a {
 }
 
 
-nav h2 a:hover,
-nav h2 a:focus,
-.links-menu a:hover,
-.links-menu a:focus {
+nav h2 a:hover, nav h2 a:focus,
+.links-menu a:hover, .links-menu a:focus { 
     background-color: var(--cor-intermediaria);
 }
 
@@ -108,7 +96,7 @@ na ul dentro do nav */
 
 /* Regra que será aplicada somente
 quando o menu for acionado para abertura */
-.links-menu.aberto {
+.links-menu.aberto {    
     /* Ativando o flex fazemos
     com que os links voltem a aparecer. */
     display: flex;
@@ -139,15 +127,15 @@ em cima do outro (ou seja, use o modo coluna) */
 
 .destaque {
     height: 88vh;
-    background-image:
+    background-image: 
         url(../imagens/fundo-destaque.jpg);
     background-attachment: fixed;
-
+    
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
+    
     /* Versão 1: aplicando
     cor e alinhamento do texto
     DIRETAMENTE em destaque */
@@ -160,8 +148,7 @@ em cima do outro (ou seja, use o modo coluna) */
 
 /* Versão 2: regras específicas
 para o h2 e para o p contidos em destaque */
-.destaque h2,
-.destaque p {
+.destaque h2, .destaque p {
     color: var(--cor-clara);
     text-align: center;
 
@@ -183,7 +170,7 @@ clamp(
   tamanhoMáximo
 ); */
 
-.destaque h2 {
+.destaque h2 { 
     font-size: clamp(3rem, 10vw, 7rem);
 }
 
@@ -193,7 +180,6 @@ clamp(
 
 /* Etapa 1) Regra de animação */
 @keyframes animaDestaque {
-
     /* Dê (estado inicial, como começa) */
     from {
         opacity: 0;
@@ -201,9 +187,7 @@ clamp(
     }
 
     /* Para (estado final, como termina) */
-    to {
-        opacity: 1;
-    }
+    to { opacity: 1; }
 }
 
 article h2 {
@@ -213,9 +197,7 @@ article h2 {
     color: var(--cor-titulo);
 }
 
-.front-end,
-.historia,
-.localizacao {
+.front-end, .historia, .localizacao {
     text-align: center;
 }
 
@@ -224,8 +206,8 @@ article p {
     font-size: 1.2rem;
 }
 
-address {
-    font-style: normal;
+address { 
+    font-style: normal; 
     font-size: 1.2rem;
 }
 
@@ -321,10 +303,7 @@ caption {
     padding-bottom: 0.5rem;
 }
 
-th,
-td {
-    border: solid 1px;
-}
+th, td { border: solid 1px; }
 
 th {
     background-color: var(--cor-escura);
@@ -333,61 +312,58 @@ th {
     padding: 0.8rem;
 }
 
-td {
-    padding: 0.5rem;
+td { padding: 0.5rem; }
+
+tr:nth-child(odd){
+    background-color: var(--cor-clara);
 }
 
-tr:nth-child(odd) {
-    background-color: yellow;
+tr:nth-child(even){
+    background-color: var(--cor-intermediaria);
 }
 
-tr:nth-child(even) {
-    background-color: salmon;
-}
-
-td:nth-child(2) {
+td:nth-child(2){
     text-align: center;
 }
 
-th:last-child,
-td:last-child {
+th:last-child, td:last-child {
     text-align: right;
 }
 
-/* Inserindo um conteúdo textual antes (before) de cada valor (td:last-child) */
+/* Inserindo um conteúdo textual
+antes (before) de cada valor (td:last-child) */
 td:last-child::before {
-    content: "R$";
+    content: "R$ ";
 }
 
+
+/* Regras para a página Serviços */
+.galeria { text-align: center; }
+
+.galeria img {
+    border-radius: 50%;
+    transform: scale(0.8);
+    filter: brightness(150%) blur(1px);
+    transition: 0.5s;
+}
+
+.galeria img:hover {
+    transform: scale(1);
+    filter: none;
+    border-radius: 10%;
+}
+
+
 @media screen and (min-width: 570px) {
-    nav h2 {
-        display: none;
-    }
-
-    .links-menu {
-        display: flex;
-    }
-
-    nav {
-        width: 60%;
-    }
-
-    .links-menu li {
-        width: 100%;
-    }
-
-    .front-end figure img {
-        height: 150px;
-    }
-
+    nav h2 { display: none; }
+    .links-menu { display: flex; }
+    nav { width: 60%; }
+    .links-menu li { width: 100%; }
+    .front-end img { height: 150px; }
 }
 
 @media screen and (min-width: 1000px) {
-    html {
-        font-size: 18px;
-    }
-
-    .limitador {
-        max-width: 1000px;
-    }
+    html { font-size: 18px; }
+    .limitador { max-width: 1000px; }
 }
+
