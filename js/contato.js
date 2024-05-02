@@ -41,9 +41,29 @@ botaoBuscar.addEventListener("click", async function(event){
     const resposta = await fetch(url); 
 
     // Etapa 3: extrair os dados da resposta da API em formato JSON
-
+    const dados = await resposta.json();
 
     // Etapa 4: lidar com os dados (em caso de erro e de sucesso)
+    if("erro" in dados){
+        mensagemStatus.textContent = "CEP inexistente!";
+        mensagemStatus.style.color = "red";
+    } else {
+        mensagemStatus.textContent = "CEP encontrado!";
+        mensagemStatus.style.color = "blue";
+        
+        /* Selecionando os elementos que estão escondidos */
+        const camposRestantes = formulario.querySelectorAll('.campos-restantes');
 
+        /* Removendo a class usando um loop*/
+        for(const campo of camposRestantes){
+            campo.classList.remove("campos-restantes");
+        }
 
+        campoEndereco.value = dados.logradouro;
+        campoBairro.value = dados.bairro;
+        campoCidade.value = dados.localidade;
+        campoEstado.value = dados.uf;
+
+    }
+    
 });
