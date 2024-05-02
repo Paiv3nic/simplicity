@@ -379,11 +379,29 @@ label {
     font-size: 0.9rem;
     font-weight: bold;
     width: 30%;
-    background-color: yellow;
 }
 
+/* Pseudo-classe :not()
+Permite criar exceções para uma regra.
+Neste exemplo, estamos aplicando 70% de largura para tudo (*) dentro do 'form div' EXCETO label. */
 form div *:not(label) {
     width: 70%;
+}
+
+button {
+    background-color: var(--cor-escura);
+    color: var(--cor-clara);
+    border: none;
+    font-weight: bold;
+    padding: 1rem 0.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover, button:focus{
+    background-color: var(--cor-clara);
+    color: var(--cor-escura);
+    box-shadow: var(--cor-escura) 0 0 2px;
 }
 
 
