@@ -353,6 +353,39 @@ td:last-child::before {
     border-radius: 10%;
 }
 
+/* Estilos para formulário de contato */
+form {
+    max-width: 500px;
+    margin: auto;
+}
+
+input, select, textarea {
+    border: none;
+    padding: 4px;
+    height: 40px;
+    border-radius: 4px;
+}
+
+textarea { height: auto; }
+
+form div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+label {
+    font-size: 0.9rem;
+    font-weight: bold;
+    width: 30%;
+    background-color: yellow;
+}
+
+form div *:not(label) {
+    width: 70%;
+}
+
 
 @media screen and (min-width: 570px) {
     nav h2 { display: none; }
