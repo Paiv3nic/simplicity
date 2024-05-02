@@ -59,7 +59,7 @@
                     <label for="cep">CEP: <br><span id="status"></span></label>
                     <div id="area-do-cep">
                         <!-- Usamos inputmode numerica para que o teclado virtual mostre números e para que não seja mostrado botões adicionais no navegador desktop. -->
-                        <input inputmode="numeric" placeholder="Somente números" type="text" id="cep" name="cep" required> <br>
+                        <input maxlength="8" inputmode="numeric" placeholder="Somente números" type="text" id="cep" name="cep" required> <br>
                         <button id="buscar">Buscar</button>
                     </div>
                 </div>
@@ -116,6 +116,7 @@
     </footer>
 
     <script src="js/menu.js"></script>
+    <script src="js/contato.js"></script>
 
 </body>
 
