@@ -11,7 +11,7 @@ const botaoBuscar = formulario.querySelector("#buscar");
 const mensagemStatus = formulario.querySelector("#status");
 
 /* Detectando quando o botão de buscar CEP é acionado */
-botaoBuscar.addEventListener("click", function(event){
+botaoBuscar.addEventListener("click", async function(event){
     /* Anular o comportamento da página. Sempre acontece ao trabalhar com <a> e <form>. */
     event.preventDefault();
 
@@ -28,5 +28,22 @@ botaoBuscar.addEventListener("click", function(event){
 
     /* Guardando o valor do cep digitado/informado */
     let cepInformado = campoCep.value;
-    console.log(cepInformado);
+    
+    /* AJAX - Asyncronus JavaScript And XML
+    (JavaScript assíncrono e XML) 
+    Técnica de comunicação (transmissão, recebimento) de dados que permite o processamento em conjunto com APIs (ou Web Services)
+    */
+
+    // Etapa 1: preparar a URL da API com o CEP informado
+    let url = `https://viacep.com.br/ws/${cepInformado}/json/`;
+
+    // Etapa 2: acessar a API (com a URL) e guardar o retorno dela
+    const resposta = await fetch(url); 
+
+    // Etapa 3: extrair os dados da resposta da API em formato JSON
+
+
+    // Etapa 4: lidar com os dados (em caso de erro e de sucesso)
+
+
 });
