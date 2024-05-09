@@ -7,9 +7,15 @@ const campoEndereco = formulario.querySelector("#endereco");
 const campoBairro = formulario.querySelector("#bairro");
 const campoCidade = formulario.querySelector("#cidade");
 const campoEstado = formulario.querySelector("#estado");
+const campoTelefone = formulario.querySelector("#telefone");
 const botaoBuscar = formulario.querySelector("#buscar");
 const mensagemStatus = formulario.querySelector("#status");
 
+/* Seleção dos campos e a ativação das máscaras */
+$(campoCep).mask("00000-000");              //01234-567
+$(campoTelefone).mask("(00) 00000-0000");   // (11) 2135-0300
+
+ 
 /* Detectando quando o botão de buscar CEP é acionado */
 botaoBuscar.addEventListener("click", async function(event){
     /* Anular o comportamento da página. Sempre acontece ao trabalhar com <a> e <form>. */
@@ -17,8 +23,8 @@ botaoBuscar.addEventListener("click", async function(event){
 
     
 
-    /* Verificando se o cep NÃO TEM 8 dígitos */
-    if ( campoCep.value.length !== 8 ){
+    /* Verificando se o cep NÃO TEM 9 dígitos */
+    if ( campoCep.value.length !== 9 ){
         mensagemStatus.textContent = "Digite o CEP válido";
         mensagemStatus.style.color = "purple"
 
@@ -67,3 +73,4 @@ botaoBuscar.addEventListener("click", async function(event){
     }
     
 });
+
