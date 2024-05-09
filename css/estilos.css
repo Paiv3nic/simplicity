@@ -418,6 +418,12 @@ button:hover, button:focus{
     padding: 12px;
 }
 
+#status-do-envio {
+    padding: 10px;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
 .campos-restantes { display: none; }
 
 @media screen and (min-width: 570px) {

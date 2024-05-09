@@ -15,16 +15,16 @@ const mensagemStatus = formulario.querySelector("#status");
 $(campoCep).mask("00000-000");              //01234-567
 $(campoTelefone).mask("(00) 00000-0000");   // (11) 2135-0300
 
- 
+
 /* Detectando quando o botão de buscar CEP é acionado */
-botaoBuscar.addEventListener("click", async function(event){
+botaoBuscar.addEventListener("click", async function (event) {
     /* Anular o comportamento da página. Sempre acontece ao trabalhar com <a> e <form>. */
     event.preventDefault();
 
-    
+
 
     /* Verificando se o cep NÃO TEM 9 dígitos */
-    if ( campoCep.value.length !== 9 ){
+    if (campoCep.value.length !== 9) {
         mensagemStatus.textContent = "Digite o CEP válido";
         mensagemStatus.style.color = "purple"
 
@@ -34,7 +34,7 @@ botaoBuscar.addEventListener("click", async function(event){
 
     /* Guardando o valor do cep digitado/informado */
     let cepInformado = campoCep.value;
-    
+
     /* AJAX - Asyncronus JavaScript And XML
     (JavaScript assíncrono e XML) 
     Técnica de comunicação (transmissão, recebimento) de dados que permite o processamento em conjunto com APIs (ou Web Services)
@@ -44,24 +44,24 @@ botaoBuscar.addEventListener("click", async function(event){
     let url = `https://viacep.com.br/ws/${cepInformado}/json/`;
 
     // Etapa 2: acessar a API (com a URL) e guardar o retorno dela
-    const resposta = await fetch(url); 
+    const resposta = await fetch(url);
 
     // Etapa 3: extrair os dados da resposta da API em formato JSON
     const dados = await resposta.json();
 
     // Etapa 4: lidar com os dados (em caso de erro e de sucesso)
-    if("erro" in dados){
+    if ("erro" in dados) {
         mensagemStatus.textContent = "CEP inexistente!";
         mensagemStatus.style.color = "red";
     } else {
         mensagemStatus.textContent = "CEP encontrado!";
         mensagemStatus.style.color = "blue";
-        
+
         /* Selecionando os elementos que estão escondidos */
         const camposRestantes = formulario.querySelectorAll('.campos-restantes');
 
         /* Removendo a class usando um loop*/
-        for(const campo of camposRestantes){
+        for (const campo of camposRestantes) {
             campo.classList.remove("campos-restantes");
         }
 
@@ -71,6 +71,38 @@ botaoBuscar.addEventListener("click", async function(event){
         campoEstado.value = dados.uf;
 
     }
-    
+
 });
 
+async function handleSubmit(event) {
+    event.preventDefault();
+    var status = document.getElementById("status-do-envio");
+    var data = new FormData(event.target);
+    fetch(event.target.action, {
+        method: formulario.method,
+        body: data,
+        headers: {
+            'Accept': 'application/json'
+        }
+    }).then(response => {
+        if (response.ok) {
+            status.innerHTML = "Obrigado por se inscrever!";
+            status.style.color = "blue"
+            formulario.reset()
+        } else {
+            response.json().then(data => {
+                if (Object.hasOwn(data, 'errors')) {
+                    status.innerHTML = data["errors"].map(error => error["message"]).join(", ")
+                } else {
+                    status.innerHTML = "Ops! Ocorreu um problema ao enviar seu formulário"
+                    status.style.color = "red"
+
+                }
+            })
+        }
+    }).catch(error => {
+        status.innerHTML = "Opa! Ocorreu um problema ao enviar seu formulário"
+        status.style.color = "red"
+    });
+}
+formulario.addEventListener("submit", handleSubmit)
